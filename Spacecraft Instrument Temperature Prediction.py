@@ -5,7 +5,7 @@ from PIL import Image
 import pickle
 
 st.markdown("<h1 style='text-align: center; font-family: Roboto;'>Spacecraft Instrument Temperature Predictor</h1>", unsafe_allow_html=True)
-st.image(Image.open(r"C:\Users\Veer Kukreja\OneDrive\Desktop\satellite.jpg"), caption="Image taken from https://www.peakpx.com/")
+st.image(Image.open("satellite.jpg"), caption="Image taken from https://www.peakpx.com/")
 st.markdown("<h1 style='text-align: left; font-family: Roboto; font-size: 30px;'>About</h1>", unsafe_allow_html=True)
 st.markdown("<h1 style='text-align: left; font-family: Roboto; font-size: 25px;'>Knowing the performance of your instrument is vital for deep space exploration. It affects the type of material needed, the range of safe operating conditions etc. Furthermore, when an instrument is launched into space, and some error is discovered, one cannot simply take it back down, make the necessary changes and send it back up. Therefore, it is absolutely crucial to know the temperature of the instruments under various operating conditions before sending them into space.</h1>", unsafe_allow_html=True)
 st.markdown("<h1 style='text-align: left; font-family: Roboto; font-size: 25px;'>Here it is important to not that the data has been taken from the Chandrayaan-2 Orbitor and the predictions are therefore, only valid for lunar satellites for the time being.</h1>", unsafe_allow_html=True)
@@ -20,7 +20,7 @@ psv= st.slider("Enter the power supply voltage (in V)", min_value=0.00, max_valu
 
 listt=[sr1, sr2, f1, fc, ra, psv]
 vk= np.array(listt).reshape(1, 6)
-model=pickle.load(open(r"C:\Users\Veer Kukreja\Downloads\temperature.pkl", "rb"))
+model=pickle.load(open("temperature_predictor.pkl", "rb"))
 temp=float(model.predict(vk))
 a=f"{temp}"
 if temp<-271.15:
